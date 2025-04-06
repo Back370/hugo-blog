@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on:  windows-latest 
     steps:
       - uses: actions/checkout@v2
         with:
@@ -15,9 +15,11 @@ jobs:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.145.0'
+        run:
+          Invoke-WebRequest -Uri https://github.com/gohugoio/hugo/releases/download/v0.145.0/hugo_extended_0.145.0_Windows-64bit.zip -OutFile hugo_extended.zip
+          Expand-Archive -Path hugo_extended.zip -DestinationPath $Env:ProgramFiles\Hugo
+          $Env:Path += ";$Env:ProgramFiles\Hugo"
+
 
       - name: Build
         run: hugo --minify
