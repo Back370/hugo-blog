@@ -34,3 +34,4 @@ jobs:
           external_repository: Back370/hugo-blog-dep.github.io
           publish_branch: main
           cname: back-2525.com
+          verbose: true
