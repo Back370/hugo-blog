@@ -22,11 +22,12 @@ jobs:
       - name: Build
         run: hugo --minify
 
-    #   - name: Deploy
-    #     uses: peaceiris/actions-gh-pages@v3
-    #     with:
-    #       github_token: ${{ secrets.GITHUB_TOKEN }}
-    #       publish_dir: ./public
+      - name: Debug - List files
+        run: ls -al
+
+      - name: Debug - Show Hugo version
+        run: hugo version
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
